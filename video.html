@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="${request.contextPath}/images/favicon.png">
+    <link href="${request.contextPath}/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="${request.contextPath}/css/tbcvideo.css" rel="stylesheet">
+    <style>
+        #player-div{
+            border: 1px solid #0A0A0A;
+            background-color: #000000;
+            position:absolute; left:50%; top:50%;
+            width:400px; height:320px;
+            margin-left:-200px; margin-top:-160px;
+        }
+        #control-bar{
+            background-color: #828282;
+            position:absolute;
+            height: 3em;
+            width: 100%;
+            bottom:0px;
+        }
+        #slider{
+            background-color: #CD6839;
+            height: 1em;
+            width: 100%;
+            position:absolute;
+            bottom: 3em;
+        }
+
+    </style>
+    <title>验证信息</title>
+    <script src="${request.contextPath}/js/jquery-1.11.1.min.js"></script>
+    <script src="${request.contextPath}/js/tbcvideo.js"></script>
+    <script src="${request.contextPath}/js/jquery-ui.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(function(){
+            $('#video2').tbcVideo({
+                videoPath: 'http://21tb-mobile.cneln.net/mp4/009e009a6db407ceb04311b32ddfbbb4.mp4',
+                courseId: 'c1',
+                scoId:'s1',
+                isComplete:'true',
+                serviceUrl:'xxx',
+                viewMode:'normal',
+                locationTime:'146.5',
+                rate:60,
+                flashPlayerUrl:"${request.contextPath}/flash/player.swf"
+            });
+            //http://21tb-video.cneln.net/flash/v2/4b6c543e0070d0ddf6c290d6b2b816c7.flv
+        });
+    </script>
+</head>
+<body style="height: 100%">
+<video id="video2" >
+
+</video>
+
+<!--<div id="player-div" >-->
+    <!--<div id="slider"></div>-->
+    <!--<div id="control-bar">-->
+        <!--<div id="video-play" title="播放/暂停"></div>-->
+        <!--<div id="time-info">0:01 / 06:20</div>-->
+        <!--<div id="full-screen-btn"></div>-->
+        <!--<div id="volume-slider"></div>-->
+        <!--<div id="volume-btn"></div>-->
+    <!--</div>-->
+<!--</div>-->
+
+</body>
+</html>
