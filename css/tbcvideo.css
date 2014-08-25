@@ -1,39 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+}
 .video-player {
-    float: left;
-    padding: 10px;
-
-    -moz-border-radius: 5px; /* FF1+ */
-    -ms-border-radius: 5px; /* IE future proofing */
-    -webkit-border-radius: 5px; /* Saf3+, Chrome */
-    border-radius: 5px; /* Opera 10.5, IE 9 */
+    /*float: left;*/
+    position: relative;
+    padding: 0px;
+    width:600px;
+    height: 338px;
+    /*-moz-border-radius: 5px; *//* FF1+ *//*
+    -ms-border-radius: 5px; *//* IE future proofing *//*
+    -webkit-border-radius: 5px; *//* Saf3+, Chrome *//*
+    border-radius: 5px; *//* Opera 10.5, IE 9 */
 
     background: #000000;
     background-image: -moz-linear-gradient(top, #313131, #000000); /* FF3.6 */
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #313131),color-stop(1, #000000)); /* Saf4+, Chrome */
 
-    box-shadow: inset 0 15px 35px #535353;
+    /*box-shadow: inset 0 15px 35px #535353;*/
 }
 .video-controls{
     background-color: #828282;
-    height: 3em;
+    opacity: 0.7;
+    height: 25px;
     width: 100%;
     bottom:0px;
+    position: absolute;
 }
 
 .video-play {
-    display: block;
+    display: inline-block;
     width: 22px;
     height: 22px;
-    float: left;
-    background: url(../images/play-icon.png) no-repeat;
-
+    background: url(../images/play-icon.png) no-repeat ;
+    position: absolute;
+    left: 10px;
     opacity: 0.7;
 
-    -moz-transition: all 0.2s ease-in-out; /*在Firefox浏览器中*/
-    -ms-transition: all 0.2s ease-in-out; /*在IE浏览器中*/
-    -o-transition: all 0.2s ease-in-out;  /*在Opera浏览器中*/
-    -webkit-transition: all 0.2s ease-in-out; /*在Safari与Chrome浏览器中*/
-    transition: all 0.2s ease-in-out;
+    /*-moz-transition: all 0.2s ease-in-out; *//*在Firefox浏览器中*//*
+    -ms-transition: all 0.2s ease-in-out; *//*在IE浏览器中*//*
+    -o-transition: all 0.2s ease-in-out;  *//*在Opera浏览器中*//*
+    -webkit-transition: all 0.2s ease-in-out; *//*在Safari与Chrome浏览器中*//*
+    transition: all 0.2s ease-in-out;*/
+}
+.video-timer{
+    position: absolute;
+    left: 38px;
 }
 
 .paused-button {
@@ -44,25 +56,35 @@
     opacity: 1;
 }
 .volume-button{
-    background: url(../images/volume-mute-icon.png) no-repeat;
+    background: url(../images/volume-full-icon.png) no-repeat;
     display: block;
     width: 22px;
     height: 22px;
     float: right;
 }
+.volume-button-small{
+    background: url(../images/volume-mute-icon.png);
+}
+.volume-mute{
+    background: url(../images/volume-mute-icon.png);
+}
 .full-screen-button{
     float:right;
 }
+.video-seek{
+    bottom: 16px;
+}
+
+
 .video-seek .ui-slider-handle {
     width: 15px;
     height: 15px;
     border: 1px solid #333;
-    top: -4px;
-
-    -moz-border-radius:10px;
-    -ms-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius:10px;
+    top: -2px;
+    -moz-border-radius:8px;
+    -ms-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
 
     background: #e6e6e6;
     background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
@@ -88,6 +110,7 @@
     box-shadow: inset 0 -3px 3px #39a2ce;
 }
 
+
 /*.volume-box {*/
     /*height: 30px;*/
     /*float: right;*/
@@ -104,8 +127,9 @@
 /*}*/
 
 .volume-slider {
-    width: 40px;
-    height: 20px;
+    margin: 5px 9px;
+    width: 100px;
+    height: 10px;
     float: right;
     -moz-transition: all 0.1s ease-in-out; /*在Firefox浏览器中*/
     -ms-transition: all 0.1s ease-in-out;  /*在IE浏览器中*/
@@ -113,10 +137,53 @@
     -webkit-transition: all 0.1s ease-in-out; /*在Safari与Chrome浏览器中*/
     transition: all 0.1s ease-in-out;
 }
+
+.volume-slider .ui-slider-handle {
+    width: 9px;
+    height: 9px;
+    border: 1px solid #333;
+    top: -1px;
+    -moz-border-radius:5px;
+    -ms-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+
+    background: #e6e6e6;
+    background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+
+    box-shadow: inset 0 -3px 3px #d5d5d5;
+}
+
+.volume-slider .ui-slider-handle.ui-state-hover {
+    background: #fff;
+}
+
+.volume-slider .ui-slider-range {
+  /*  -moz-border-radius:15px;
+    -ms-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;*/
+
+    background: #4cbae8;
+    background-image: -moz-linear-gradient(top, #4cbae8, #39a2ce);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #4cbae8),color-stop(1, #39a2ce));
+
+    box-shadow: inset 0 -3px 3px #39a2ce;
+}
+
+
+
+
+
+
+
+
+
 .video-control-bar{
     width: 400px;height: 2em;
     background-color: #07141e;
-    background-color: rgba(7, 20, 30, .7)
+    background-color: rgba(7, 20, 30, .7);
     -moz-border-radius: 5px; /* FF1+ */
     -ms-border-radius: 5px; /* IE future proofing */
     -webkit-border-radius: 5px; /* Saf3+, Chrome */
@@ -131,4 +198,34 @@
     background: url(../images/volume-full-icon.png) no-repeat;
     width: 22px;
     height: 22px;
+}
+
+.video-initial-size {
+    width: 100%;
+    height: 100%;
+}
+
+.video-player-full-screen{
+ width: 100%;
+  height: 100%;
+}
+
+.poster-play-button {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 40%;
+    left:40%;
+    z-index: 999;
+    background: url(../images/play-icon.png) no-repeat rgba(50, 50, 50, 1) center;
+    box-shadow: 0 0 3em #ffffff;
+    cursor: pointer;
+    -moz-border-radius: 25%; /* FF1+ */
+    -ms-border-radius: 25%; /* IE future proofing */
+    -webkit-border-radius: 25%; /* Saf3+, Chrome */
+    border-radius: 25%;
+}
+
+.poster-play-button:hover{
+    border: solid 2px #fff;
 }

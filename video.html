@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="${request.contextPath}/images/favicon.png">
+ <!--   <link rel="shortcut icon" href="${request.contextPath}/images/favicon.png">
     <link href="${request.contextPath}/css/jquery-ui.min.css" rel="stylesheet">
-    <link href="${request.contextPath}/css/tbcvideo.css" rel="stylesheet">
+    <link href="${request.contextPath}/css/tbcvideo.css" rel="stylesheet">-->
+    <link rel="shortcut icon" href="images/favicon.png">
+   <link href="css/jquery-ui-1.10.3.min.css" rel="stylesheet">
+   <link href="css/tbcvideo.css" rel="stylesheet">
     <style>
-        #player-div{
+/*        #player-div{
             border: 1px solid #0A0A0A;
             background-color: #000000;
             position:absolute; left:50%; top:50%;
@@ -30,15 +33,17 @@
             width: 100%;
             position:absolute;
             bottom: 3em;
-        }
+        }*/
 
     </style>
     <title>验证信息</title>
-    <script src="${request.contextPath}/js/jquery-1.11.1.min.js"></script>
+  <!--  <script src="${request.contextPath}/js/jquery-1.11.1.min.js"></script>
     <script src="${request.contextPath}/js/tbcvideo.js"></script>
-    <script src="${request.contextPath}/js/jquery-ui.min.js"></script>
+    <script src="${request.contextPath}/js/jquery-ui.min.js"></script>-->
 
-
+     <script src="js/jquery-1.11.1.min.js"></script>
+      <script src="js/jquery-ui-1.10.3.min.js"></script>
+    <script src="js/tbcvideo.js"></script>
 
     <script type="text/javascript">
         $(function(){
@@ -51,7 +56,8 @@
                 viewMode:'normal',
                 locationTime:'146.5',
                 rate:60,
-                flashPlayerUrl:"${request.contextPath}/flash/player.swf"
+                //flashPlayerUrl:"${request.contextPath}/flash/player.swf"
+                flashPlayerUrl:"flash/player.swf"
             });
             //http://21tb-video.cneln.net/flash/v2/4b6c543e0070d0ddf6c290d6b2b816c7.flv
         });
