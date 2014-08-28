@@ -15,6 +15,7 @@
             flashPlayerUrl:''
         };
         var opts = $.extend(player_params, options);
+        this.data("param",player_params);
         var videoSupport = function checkVideo() {
             if (!!document.createElement('video').canPlayType) {
                 var vidTest = document.createElement("video");
@@ -164,10 +165,18 @@
                     },
                     stop: function (e, ui) {
                         seeksliding = false;
-                        $tbcVideo.prop("currentTime", ui.value);
+                        var currentTime = $tbcVideo.prop("currentTime");
+                        if(player_params.viewMode == 'normal'){
+                            if(ui.value > currentTime){
+                                $(this).slider({value:currentTime})
+                            }else{
+                                $tbcVideo.prop("currentTime", ui.value)
+                            }
+                        }else{
+                            $tbcVideo.prop("currentTime", ui.value);
+                        }
                     }
                 });
-                //$video_controls.show();
             } else {
                 setTimeout(vSliderSeek, 150);
             }
@@ -286,10 +295,14 @@
             $(".video-controls").fadeIn("slow");
             hidemouse = setTimeout("$('.video-controls').fadeOut('slow')", 2000);
         });
+        //浏览器关闭触发保存进度事件
+        $(window).bind("beforeunload",function(){
+            $tbcVideo.saveVideoLocation();
+        })
 
         //向外暴露的工具函数
         $.fn.extend({
-            tbcVideoPlay:function(){
+            playToggle:function(){
                 if (this.prop('paused') == true) {
                     this[0].play();
                 }
@@ -298,8 +311,25 @@
                 }
                 this.prev().removeClass("poster-play-button")
             },
-            getCurrentVideoTime:function(){
+            getPlayerHeadTime:function(){
                 return Math.floor(this.prop("currentTime"));
+            },
+            getPlayerTotalTime:function(){
+                return Math.floor(this.prop("duration"));
+            },
+            getPlayerState:function(){
+                if (this[0].paused) {
+                    return "paused"
+                } else if (this[0].played) {
+                    return "played";
+                }else{
+                    return "readyed";
+                }
+            },
+            saveVideoLocation: function () {
+                var serviceUrl = this.data("param").serviceUrl;
+                $.post(serviceUrl,{});
+
             }
 
         });
