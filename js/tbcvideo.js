@@ -170,6 +170,7 @@
                         if(player_params.viewMode == 'normal'){
                             if(ui.value > cTime){
                                 $(this).slider({value:cTime})
+                                $tbcVideo.prop("currentTime", cTime)
                             }else{
                                 $tbcVideo.prop("currentTime", ui.value)
                             }
