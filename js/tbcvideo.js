@@ -87,6 +87,7 @@
                 $tbcVideo.replaceWith(videoFlvHtml);
             }
         }
+        var cTime = parseFloat(player_params.locationTime);
         var $tbcVideo = this;
         var initialVideo = function () {
             $tbcVideo.addClass("video-initial-size");
@@ -152,6 +153,7 @@
         var seeksliding;
         var vSliderSeek = function () {//进度条
             if ($tbcVideo.prop('readyState')) {
+                $tbcVideo.prop("currentTime", cTime);
                 var video_duration = $tbcVideo.prop('duration');
                 $video_seek.slider({
                     value: 0,
@@ -165,10 +167,9 @@
                     },
                     stop: function (e, ui) {
                         seeksliding = false;
-                        var currentTime = $tbcVideo.prop("currentTime");
                         if(player_params.viewMode == 'normal'){
-                            if(ui.value > currentTime){
-                                $(this).slider({value:currentTime})
+                            if(ui.value > cTime){
+                                $(this).slider({value:cTime})
                             }else{
                                 $tbcVideo.prop("currentTime", ui.value)
                             }
@@ -192,6 +193,9 @@
         var seekUpdate = function () {
             var currenttime = $tbcVideo.prop('currentTime');
             var durationTime = $tbcVideo.prop("duration")
+            if(currenttime>cTime){
+                cTime = currenttime;
+            }
             if (!seeksliding) $video_seek.slider({ value: currenttime });
             if (durationTime) {
                 $video_timer.text(vTimeFormat(currenttime) + "/" + vTimeFormat(durationTime));
